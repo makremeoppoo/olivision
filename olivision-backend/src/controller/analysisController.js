@@ -7,7 +7,7 @@ const baseUrl = process.env.BASE_URL;
 const upload = async (req, res) => {
   try {
     await uploadFile(req, res);
-
+    console.log('File uploaded:', req.file);
     if (req.file == undefined) {
       return res.status(400).send({ message: "Please upload a file!" });
     }
