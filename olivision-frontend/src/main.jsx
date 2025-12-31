@@ -1,21 +1,25 @@
 /** @format */
 
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-import { themeConfig, ThemeProvider } from "src/theme";
+import { themeConfig, ThemeProvider } from 'src/theme';
 
-import Uplload from "./pages/upload";
+import App from './app';
+import Uplload from './pages/upload';
 // ----------------------------------------------------------------------
 
-const root = createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById('root'));
 
 root.render(
   <StrictMode>
     <ThemeProvider
       modeStorageKey={themeConfig.modeStorageKey}
-      defaultMode={themeConfig.defaultMode}>
-      <Uplload />
+      defaultMode={themeConfig.defaultMode}
+    >
+      <App>
+        <Uplload />
+      </App>
     </ThemeProvider>
   </StrictMode>
 );

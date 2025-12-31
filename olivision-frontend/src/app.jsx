@@ -1,13 +1,24 @@
 /** @format */
+import { useState, useEffect } from 'react';
 
-import "src/global.css";
-
-import { MotionLazy } from "src/components/animate/motion-lazy";
+import { SplashScreen } from 'src/components/loading-screen';
 
 // ----------------------------------------------------------------------
 
 export default function App({ children }) {
-  return { children };
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // splash duration
+
+    return () => clearTimeout(timer);
+  }, []);
+  if (loading) {
+    return <SplashScreen />;
+  }
+  return <>{children} </>;
 }
 
 // ----------------------------------------------------------------------
