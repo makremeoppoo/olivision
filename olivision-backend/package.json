@@ -1,0 +1,28 @@
+{
+  "name": "node-js-express-upload-download-files",
+  "version": "1.0.0",
+  "description": "Node.js Express Rest APIs to Upload/Download Files",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node js",
+    "upload",
+    "download",
+    "file",
+    "multipart",
+    "rest api",
+    "express",
+    "multer"
+  ],
+  "author": "amica",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4.17.1",
+    "multer": "^2.0.2"
+  }
+}
