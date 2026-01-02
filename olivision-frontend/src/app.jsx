@@ -1,7 +1,14 @@
 /** @format */
 import { useState, useEffect } from 'react';
 
+import { themeConfig, ThemeProvider } from 'src/theme';
+import { I18nProvider } from 'src/locales/i18n-provider';
+
 import { SplashScreen } from 'src/components/loading-screen';
+import { defaultSettings, SettingsProvider } from 'src/components/settings';
+import { LanguagePopover } from 'src/components/custom-popover/language-popover';
+
+import { allLangs } from './locales';
 
 // ----------------------------------------------------------------------
 
@@ -18,7 +25,20 @@ export default function App({ children }) {
   if (loading) {
     return <SplashScreen />;
   }
-  return <>{children} </>;
+  return (
+    <I18nProvider>
+      <SettingsProvider defaultSettings={defaultSettings}>
+        <ThemeProvider
+          modeStorageKey={themeConfig.modeStorageKey}
+          defaultMode={themeConfig.defaultMode}
+        >
+          {/** @slot Language popover */}
+          <LanguagePopover data={allLangs} />
+          {children}
+        </ThemeProvider>
+      </SettingsProvider>
+    </I18nProvider>
+  );
 }
 
 // ----------------------------------------------------------------------

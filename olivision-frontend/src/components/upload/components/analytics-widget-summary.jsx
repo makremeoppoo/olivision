@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import Alert from '@mui/material/Alert';
 import { useTheme } from '@mui/material/styles';
 
+import { useTranslate } from 'src/locales';
 import square from 'src/assets/shape-square.svg';
 
 import { Iconify } from 'src/components/iconify';
@@ -25,6 +26,7 @@ export function AnalyticsWidgetSummary({
   ...other
 }) {
   const theme = useTheme();
+  const trans = useTranslate();
 
   const renderAcidity = () => (
     <Box
@@ -64,7 +66,6 @@ export function AnalyticsWidgetSummary({
       {...other}
     >
       <Box sx={{ width: 48, height: 48, mb: 2 }}>{icon}</Box>
-
       {renderAcidity()}
       {alertMessage && (
         <Alert severity="error" sx={{ mb: 2 }}>
@@ -78,73 +79,32 @@ export function AnalyticsWidgetSummary({
           gap: 3,
         }}
       >
-        {/* Left Side - English */}
         <Box>
           <Box sx={{ mb: 1 }}>
             <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>
               <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-                <Iconify width={20} icon="mdi:leaf" /> Maturity
+                <Iconify width={20} icon="mdi:leaf" /> {trans.t('maturity')}
               </Box>
             </Box>
             <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{maturity}</Box>
           </Box>
           <Box sx={{ mb: 1 }}>
             <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-              <Iconify width={20} icon="mdi:leaf" /> Acidity
+              <Iconify width={20} icon="mdi:leaf" /> {trans.t('acidity')}
             </Box>
             <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{acidity}</Box>
           </Box>
           <Box sx={{ mb: 1 }}>
             <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-              <Iconify width={20} icon="mdi:leaf" /> Note
+              <Iconify width={20} icon="mdi:leaf" /> {trans.t('note')}
             </Box>
             <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{note}</Box>
           </Box>
           <Box>
             <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-              <Iconify width={20} icon="mdi:leaf" /> Recommendation
+              <Iconify width={20} icon="mdi:leaf" /> {trans.t('recommendation')}
             </Box>
             <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{recommendation}</Box>
-          </Box>
-        </Box>
-
-        {/* Right Side - Arabic */}
-        <Box sx={{ textAlign: 'right', direction: 'rtl' }}>
-          <Box sx={{ mb: 1 }}>
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>
-              <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-                <Iconify width={20} icon="mdi:leaf" /> النضج
-              </Box>
-            </Box>
-
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{maturity}</Box>
-          </Box>
-          <Box sx={{ mb: 1 }}>
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>
-              <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-                <Iconify width={20} icon="mdi:leaf" /> الحموضة
-              </Box>
-            </Box>
-
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{acidity}</Box>
-          </Box>
-          <Box sx={{ mb: 1 }}>
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>
-              <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-                <Iconify width={20} icon="mdi:leaf" /> ملاحظة
-              </Box>
-            </Box>
-
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{note}</Box>
-          </Box>
-          <Box>
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>
-              <Box sx={{ typography: 'subtitle1', color: `primary.main` }}>
-                <Iconify width={20} icon="mdi:leaf" /> توصية
-              </Box>
-            </Box>
-
-            <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>{recommendationAr}</Box>
           </Box>
         </Box>
       </Box>

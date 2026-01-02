@@ -104,6 +104,11 @@ export function Upload({
       >
         <input {...getInputProps()} />
         {isSingleFileSelected ? renderSingleFilePreview() : renderPlaceholder()}
+        {isSingleFileSelected && (
+          <DeleteButton size="small" onClick={onDelete}>
+            <Iconify icon="mingcute:close-line" width={16} />
+          </DeleteButton>
+        )}
       </UploadArea>
       <SubmitContainer>
         <Tooltip title="Send">
@@ -112,11 +117,7 @@ export function Upload({
           </IconButton>
         </Tooltip>
       </SubmitContainer>
-      {isSingleFileSelected && (
-        <DeleteButton size="small" onClick={onDelete}>
-          <Iconify icon="mingcute:close-line" width={16} />
-        </DeleteButton>
-      )}
+
       {helperText && <FormHelperText error={!!error}>{helperText}</FormHelperText>}
       {showFilesRejected && <RejectedFiles files={fileRejections} {...slotProps?.rejectedFiles} />}
       {renderSingleFileLoading()}
