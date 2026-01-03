@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const fs = require('fs');
 
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
-const analyzeOliveImage = async (filePath, mimeType) => {
+const analyzeOliveImage = async (currentLang, filePath, mimeType) => {
     try {
         // Note: As of late 2024/2025, use "gemini-1.5-flash" or "gemini-1.5-pro"
         const model = genAI.getGenerativeModel({
@@ -22,35 +22,42 @@ const analyzeOliveImage = async (filePath, mimeType) => {
         };
 
         const prompt = `
-                Act as an expert agronomist and olive oil quality grader. 
-                Analyze the olives in this image and return a JSON response.
+              Act as an expert agronomist and olive oil quality grader. 
+                Analyze the olives in this image and return ONLY a JSON response.
 
-                1. Calculate Maturity Index (MI) from 0.0 to 7.0 based on skin and pulp color.
-                2. Predict the Acidity percentage (e.g., "0.25%").
-                3. Categorize the quality:
-                - 0.1% to 0.3%: "Premium Extra Virgin"
-                - 0.31% to 0.5%: "High Quality Extra Virgin"
-                - 0.51% to 0.8%: "Standard Extra Virgin"
-                - Above 0.8%: "Virgin or Lampante"
-                
-                4. DISEASE & DAMAGE DETECTION: 
-                - Specifically check for signs of "Bactrocera oleae" (Olive Fruit Fly), "Gloeosporium olivarum" (Olive Anthracnose), or "Spilocaea oleagina" (Peacock Spot).
-                - In "harvest_recommendation", state clearly if a "maladie" (disease) exists and identify its type.
-                - Set "needs_alert" to true if acidity > 0.6%, or if there is any visible disease or physical fruit damage.
+                1. MATURITY & YIELD:
+                - Calculate Maturity Index (MI) from 0.0 (deep green) to 7.0 (black skin/dark pulp).
+                - Estimate Oil Yield: Based on the MI and cultivar, predict how many kilograms of olives are needed for 1 liter of oil, and estimate the oil percentage (e.g., "1kg produces ~0.15-0.20L").
+
+                2. ACIDITY & QUALITY:
+                - Predict Acidity based on fruit integrity and ripeness.
+                - Quality Categories: 
+                    - 0.1%-0.3%: "Premium Extra Virgin"
+                    - 0.31%-0.5%: "High Quality Extra Virgin"
+                    - 0.51%-0.8%: "Standard Extra Virgin"
+                    - >0.8%: "Virgin or Lampante"
+
+                3. PHYTOSANITARY ANALYSIS:
+                - Scan for: "Bactrocera oleae" (Fly stings/holes), "Gloeosporium olivarum" (Anthracnose rot), or "Spilocaea oleagina" (Peacock Spot).
+                - "needs_alert" must be true if: Acidity > 0.6%, any disease is detected, or physical bruising/frost damage is visible.
+
+                4. OUTPUT SPECIFICATIONS:
+                - The field "harvest_recommendation" MUST be in ${currentLang}.
+                - It must include: Harvest timing, disease status, and the estimated oil yield (how much oil 1kg provides).
+                - The field "alert_message" MUST be in ${currentLang}.
 
                 Return ONLY this JSON structure:
                 {
                 "cultivar": "string",
                 "maturity_index": 0.0,
+                "estimated_yield": "string (e.g., 1kg ≈ 0.18L)",
                 "predicted_acidity": "0.0%",
-                "quality_note": "Premium Extra Virgin / High Quality Extra Virgin / Standard Extra Virgin",
-                "harvest_recommendation": "string (Include disease name and status here)",
-                "harvest_recommendation_arabic": "string (Include disease name and status in Arabic)",
+                "quality_note": "string",
+                "harvest_recommendation": "string (In ${currentLang}: Timing + Disease status + Yield explanation)",
                 "needs_alert": boolean,
-                "alert_message": "string (Describe the disease or damage if needs_alert is true)"
+                "alert_message": "string (Describe disease or damage in detail if needs_alert is true)"
                 }
         `;
-
         const result = await model.generateContent([prompt, imagePart]);
         const response = await result.response;
 

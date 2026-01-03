@@ -6,14 +6,13 @@ const baseUrl = process.env.BASE_URL;
 
 const upload = async (req, res) => {
   try {
-    console.log('File uploaded:', req.file);
 
     await uploadFile(req, res);
     if (req.file == undefined) {
       return res.status(400).send({ message: "Please upload a file!" });
     }
     // { 'cultivar': 'string', 'maturity_index': 'float (0.0-7.0)', 'quality_grade': 'Extra Virgin / Virgin / Lampante', 'predicted_acidity': '< percentage', 'harvest_recommendation': 'text', 'confidence_score': 'percentage' }"
-    const analysis = await geminiService.analyzeOliveImage(req.file.path, req.file.mimetype);
+    const analysis = await geminiService.analyzeOliveImage(req.body.currentLang, req.file.path, req.file.mimetype);
 
     // remove file after analysis
     fs.unlinkSync(req.file.path);

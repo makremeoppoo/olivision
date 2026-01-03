@@ -70,21 +70,19 @@ export function Upload({
     </PlaceholderContainer>
   );
   const renderResult = () => (
-    <Grid container spacing={3}>
-      <Grid size={{ xs: 12 }}>
-        <AnalyticsWidgetSummary
-          title="Report"
-          maturity={result?.maturity_index}
-          acidity={result?.predicted_acidity}
-          note={result?.quality_note}
-          recommendation={result?.harvest_recommendation}
-          recommendationAr={result?.harvest_recommendation_arabic}
-          harvest_recommendation_arabic
-          color={result?.needs_alert ? 'primary' : 'error'}
-          alertMessage={result?.needs_alert ? result?.alert_message : null}
-          icon={<img alt="Messages" style={{ widht: 50, height: 50 }} src={logo} />}
-        />
-      </Grid>
+    <Grid size={{ xs: 6 }}>
+      <AnalyticsWidgetSummary
+        title="Report"
+        maturity={result?.maturity_index}
+        acidity={result?.predicted_acidity}
+        note={result?.quality_note}
+        recommendation={result?.harvest_recommendation}
+        recommendationAr={result?.harvest_recommendation_arabic}
+        harvest_recommendation_arabic
+        color={result?.needs_alert ? 'primary' : 'error'}
+        alertMessage={result?.needs_alert ? result?.alert_message : null}
+        icon={<img alt="Messages" style={{ widht: 250, height: 250 }} src={logo} />}
+      />
     </Grid>
   );
   const renderSingleFileLoading = () => loading && !multiple && <SplashScreen />;
@@ -93,35 +91,42 @@ export function Upload({
 
   return (
     <UploadWrapper {...slotProps?.wrapper} className={uploadClasses.wrapper}>
-      <UploadArea
-        {...getRootProps()}
-        className={mergeClasses([uploadClasses.default, className], {
-          [uploadClasses.state.dragActive]: isDragActive,
-          [uploadClasses.state.disabled]: disabled,
-          [uploadClasses.state.error]: hasError,
-        })}
-        sx={sx}
-      >
-        <input {...getInputProps()} />
-        {isSingleFileSelected ? renderSingleFilePreview() : renderPlaceholder()}
-        {isSingleFileSelected && (
-          <DeleteButton size="small" onClick={onDelete}>
-            <Iconify icon="mingcute:close-line" width={16} />
-          </DeleteButton>
-        )}
-      </UploadArea>
-      <SubmitContainer>
-        <Tooltip title="Send">
-          <IconButton color="primary" onClick={onClick}>
-            <Iconify icon="custom:send-fill" />
-          </IconButton>
-        </Tooltip>
-      </SubmitContainer>
+      <Grid container spacing={3}>
+        <Grid size={{ xs: 6 }}>
+          <UploadArea
+            {...getRootProps()}
+            className={mergeClasses([uploadClasses.default, className], {
+              [uploadClasses.state.dragActive]: isDragActive,
+              [uploadClasses.state.disabled]: disabled,
+              [uploadClasses.state.error]: hasError,
+            })}
+            sx={sx}
+          >
+            <input {...getInputProps()} />
+            {isSingleFileSelected ? renderSingleFilePreview() : renderPlaceholder()}
+            {isSingleFileSelected && (
+              <DeleteButton size="small" onClick={onDelete}>
+                <Iconify icon="mingcute:close-line" width={16} />
+              </DeleteButton>
+            )}
+          </UploadArea>
+          <SubmitContainer>
+            <Tooltip title="Send">
+              <IconButton color="primary" onClick={onClick}>
+                <Iconify icon="custom:send-fill" />
+              </IconButton>
+            </Tooltip>
+          </SubmitContainer>
 
-      {helperText && <FormHelperText error={!!error}>{helperText}</FormHelperText>}
-      {showFilesRejected && <RejectedFiles files={fileRejections} {...slotProps?.rejectedFiles} />}
-      {renderSingleFileLoading()}
-      {result && renderResult()}
+          {helperText && <FormHelperText error={!!error}>{helperText}</FormHelperText>}
+          {showFilesRejected && (
+            <RejectedFiles files={fileRejections} {...slotProps?.rejectedFiles} />
+          )}
+        </Grid>
+        {renderSingleFileLoading()}
+
+        {renderResult()}
+      </Grid>
     </UploadWrapper>
   );
 }

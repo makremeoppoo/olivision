@@ -19,7 +19,6 @@ export function LanguagePopover({ data = [], sx, ...other }) {
   const { open, anchorEl, onClose, onOpen } = usePopover();
 
   const { onChangeLang, currentLang } = useTranslate();
-  const trans = useTranslate();
 
   const handleChangeLang = useCallback(
     (lang) => {

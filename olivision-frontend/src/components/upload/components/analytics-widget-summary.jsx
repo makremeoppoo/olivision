@@ -28,57 +28,14 @@ export function AnalyticsWidgetSummary({
   const theme = useTheme();
   const trans = useTranslate();
 
-  const renderAcidity = () => (
-    <Box
-      sx={{
-        top: 16,
-        gap: 0.5,
-        right: 16,
-        display: 'flex',
-        position: 'absolute',
-        alignItems: 'center',
-        color: acidity > 0.6 ? 'red' : 'green',
-      }}
-    >
-      <Iconify width={20} icon={acidity > 0.6 ? 'eva:trending-down-fill' : 'mdi:leaf'} />
-      <Box
-        component="span"
-        style={{ color: acidity > 0.6 ? 'red' : 'green' }}
-        sx={{ typography: 'subtitle2', color: `primary.main` }}
-      >
-        {acidity}
-      </Box>
-    </Box>
-  );
-
-  return (
-    <Card
-      sx={[
-        () => ({
-          p: 3,
-          boxShadow: 'none',
-          position: 'relative',
-          color: `${color}.darker`,
-          backgroundImage: `linear-gradient(135deg, ${theme.vars.palette.grey[400]}, ${theme.vars.palette.grey[200]})`,
-        }),
-        ...(Array.isArray(sx) ? sx : [sx]),
-      ]}
-      {...other}
-    >
-      <Box sx={{ width: 48, height: 48, mb: 2 }}>{icon}</Box>
-      {renderAcidity()}
+  const RESULT = (
+    <>
       {alertMessage && (
         <Alert severity="error" sx={{ mb: 2 }}>
           {alertMessage}
         </Alert>
       )}
-      <Box
-        sx={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 3,
-        }}
-      >
+      <Box>
         <Box>
           <Box sx={{ mb: 1 }}>
             <Box sx={{ typography: 'subtitle2', color: `primary.main` }}>
@@ -108,7 +65,25 @@ export function AnalyticsWidgetSummary({
           </Box>
         </Box>
       </Box>
+    </>
+  );
 
+  return (
+    <Card
+      sx={[
+        () => ({
+          p: 3,
+          boxShadow: 'none',
+          position: 'relative',
+          color: `${color}.darker`,
+          backgroundImage: `linear-gradient(135deg, ${theme.vars.palette.grey[400]}, ${theme.vars.palette.grey[200]})`,
+        }),
+        ...(Array.isArray(sx) ? sx : [sx]),
+      ]}
+      {...other}
+    >
+      {maturity && RESULT}
+      {!maturity && <Box>{icon}</Box>}
       <SvgColor
         src={square}
         sx={{

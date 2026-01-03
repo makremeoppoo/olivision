@@ -25,7 +25,7 @@ export const UploadWrapper = styled('div')(({ theme }) => ({
 }));
 
 export const UploadArea = styled('div')(({ theme }) => ({
-  minHeight: 280,
+  minHeight: 580,
   outline: 'none',
   display: 'flex',
   cursor: 'pointer',

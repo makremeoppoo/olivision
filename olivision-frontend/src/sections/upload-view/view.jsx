@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from 'react';
 
+import { useTranslate } from 'src/locales';
 import axiosInstance, { endpoints } from 'src/lib/axios';
 
 import { Upload } from 'src/components/upload';
@@ -13,6 +14,7 @@ export function UploadView() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { currentLang } = useTranslate();
 
   const handleDropSingleFile = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
@@ -27,9 +29,11 @@ export function UploadView() {
     const formData = new FormData();
     // IMPORTANT: field name must match multer field name (e.g. upload.single("file"))
     formData.append('file', file);
+    formData.append('currentLang', currentLang.value);
 
     try {
       setLoading(true);
+
       const response = await axiosInstance.post(endpoints.upload, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
