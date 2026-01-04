@@ -4,11 +4,12 @@ import { useDropzone } from 'react-dropzone';
 import { mergeClasses } from 'minimal-shared/utils';
 
 import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
 import FormHelperText from '@mui/material/FormHelperText';
 
 import logo from 'src/assets/logo.svg';
+import { useTranslate } from 'src/locales';
 import { UploadIllustration } from 'src/assets/illustrations';
 
 import { SplashScreen } from 'src/components/loading-screen';
@@ -57,6 +58,7 @@ export function Upload({
   const isSingleFileSelected = !multiple && !!value && !Array.isArray(value);
   const hasError = isDragReject || !!error;
   const showFilesRejected = !hideFilesRejected && fileRejections.length > 0;
+  const trans = useTranslate();
 
   const renderPlaceholder = () => (
     <PlaceholderContainer className={uploadClasses.placeholder.root}>
@@ -112,9 +114,9 @@ export function Upload({
           </UploadArea>
           <SubmitContainer>
             <Tooltip title="Send">
-              <IconButton color="primary" onClick={onClick}>
-                <Iconify icon="custom:send-fill" />
-              </IconButton>
+              <Button variant="contained" color="primary" onClick={onClick}>
+                {trans.t('generate')}
+              </Button>
             </Tooltip>
           </SubmitContainer>
 

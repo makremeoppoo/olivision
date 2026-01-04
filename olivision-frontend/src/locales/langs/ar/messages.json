@@ -2,5 +2,18 @@
   "maturity": "النضج",
   "acidity": "الحموضة",
   "note": "ملاحظة",
-  "recommendation": "توصية"
+  "recommendation": "توصية",
+  "generate": "توليد التقرير",
+  "acidityQuality": {
+    "title": "الحموضة والجودة",
+    "qualityCategories": "فئات الجودة:",
+    "premium": "0.1% - 0.3%: بكر ممتاز عالي الجودة premium",
+    "highQuality": "0.31% - 0.5%: بكر ممتاز عالي الجودة",
+    "standard": "0.51% - 0.8%: بكر ممتاز عادي",
+    "virgin": "0.8%: زيت بكر أو لامبانتي"
+  },
+  "maturityYield": {
+    "title": "النضج والمردودية",
+    "maturityIndex": "مؤشر النضج (MI) من 0.0 (أخضر داكن) إلى 7.0 (قشرة سوداء ولب داكن)"
+  }
 }

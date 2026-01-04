@@ -2,5 +2,18 @@
   "maturity": "Maturity",
   "acidity": "Acidity",
   "note": "Note",
-  "recommendation": "Recommendation"
+  "recommendation": "Recommendation",
+  "generate": "Generate Report",
+  "acidityQuality": {
+    "title": "ACIDITY & QUALITY",
+    "qualityCategories": "Quality Categories:",
+    "premium": "0.1% - 0.3%: Premium Extra Virgin",
+    "highQuality": "0.31% - 0.5%: High Quality Extra Virgin",
+    "standard": "0.51% - 0.8%: Standard Extra Virgin",
+    "virgin": "0.8%: Virgin or Lampante"
+  },
+  "maturityYield": {
+    "title": "MATURITY & YIELD",
+    "maturityIndex": "Maturity Index (MI) from 0.0 (deep green) to 7.0 (black skin / dark pulp)"
+  }
 }
