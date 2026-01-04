@@ -7,7 +7,8 @@ const app = express();
 global.__basedir = __dirname;
 
 var corsOptions = {
-  origin: 'https://olivision-front.vercel.app', // Change to your Frontend URL
+  origin: 'https://olivision.vercel.app', // Change to your Frontend URL
+  //  origin: 'http://localhost:3031', // Change to your Frontend URL
   methods: ['POST', 'GET'],
   allowedHeaders: ['Content-Type']
 };
