@@ -85,7 +85,7 @@ export function AnalyticsWidgetSummary({
         {...other}
       >
         <Grid container justifyContent="space-between" sx={{ mb: 3 }}>
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Box sx={{ mb: 1 }}>
               <Box sx={{ typography: 'subtitle2', color: 'white' }}>
                 <Box sx={{ typography: 'subtitle1' }}>
@@ -103,7 +103,7 @@ export function AnalyticsWidgetSummary({
             </Box>
           </Grid>
 
-          <Grid item xs={6}>
+          <Grid item xs={12}>
             <Box sx={{ mb: 1 }}>
               <Box sx={{ typography: 'subtitle2', color: 'white' }}>
                 <Box sx={{ typography: 'subtitle1' }}>

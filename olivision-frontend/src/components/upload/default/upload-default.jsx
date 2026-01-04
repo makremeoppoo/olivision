@@ -72,20 +72,18 @@ export function Upload({
     </PlaceholderContainer>
   );
   const renderResult = () => (
-    <Grid size={{ xs: 6 }}>
-      <AnalyticsWidgetSummary
-        title="Report"
-        maturity={result?.maturity_index}
-        acidity={result?.predicted_acidity}
-        note={result?.quality_note}
-        recommendation={result?.harvest_recommendation}
-        recommendationAr={result?.harvest_recommendation_arabic}
-        harvest_recommendation_arabic
-        color={result?.needs_alert ? 'primary' : 'error'}
-        alertMessage={result?.needs_alert ? result?.alert_message : null}
-        icon={<img alt="Messages" style={{ widht: 250, height: 250 }} src={logo} />}
-      />
-    </Grid>
+    <AnalyticsWidgetSummary
+      title="Report"
+      maturity={result?.maturity_index}
+      acidity={result?.predicted_acidity}
+      note={result?.quality_note}
+      recommendation={result?.harvest_recommendation}
+      recommendationAr={result?.harvest_recommendation_arabic}
+      harvest_recommendation_arabic
+      color={result?.needs_alert ? 'primary' : 'error'}
+      alertMessage={result?.needs_alert ? result?.alert_message : null}
+      icon={<img alt="Messages" style={{ widht: 250, height: 250 }} src={logo} />}
+    />
   );
   const renderSingleFileLoading = () => loading && !multiple && <SplashScreen />;
 
@@ -94,7 +92,7 @@ export function Upload({
   return (
     <UploadWrapper {...slotProps?.wrapper} className={uploadClasses.wrapper}>
       <Grid container spacing={3}>
-        <Grid size={{ xs: 6 }}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <UploadArea
             {...getRootProps()}
             className={mergeClasses([uploadClasses.default, className], {
@@ -125,10 +123,9 @@ export function Upload({
             <RejectedFiles files={fileRejections} {...slotProps?.rejectedFiles} />
           )}
         </Grid>
-        {renderSingleFileLoading()}
-
-        {renderResult()}
+        <Grid size={{ xs: 12, md: 6 }}>{renderResult()}</Grid>
       </Grid>
+      {renderSingleFileLoading()}
     </UploadWrapper>
   );
 }

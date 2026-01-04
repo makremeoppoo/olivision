@@ -13,19 +13,22 @@ import { uploadClasses } from '../classes';
 
 export const UploadWrapper = styled('div')(({ theme }) => ({
   width: '100%',
-  height: '100vh',
-  paddingLeft: '10%',
-  paddingRight: '10%',
-  paddingTop: '2%',
+  height: '100%', // default for mobile
+  [theme.breakpoints.up('md')]: {
+    // md = desktop
+    height: '100vh',
+  },
+  padding: '50px 10%', // padding inside wrapper, can adjust as needed
   position: 'relative',
+  backgroundColor: theme.vars.palette.background.default,
   backgroundImage: `url(${BgImage})`,
   backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
+  backgroundSize: 'cover', // ensures image covers entire div
+  backgroundPosition: 'center', // center image
 }));
 
 export const UploadArea = styled('div')(({ theme }) => ({
-  minHeight: 580,
+  minHeight: 450,
   outline: 'none',
   display: 'flex',
   cursor: 'pointer',
