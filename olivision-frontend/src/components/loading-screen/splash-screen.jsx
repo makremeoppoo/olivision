@@ -5,9 +5,7 @@ import { Fragment } from 'react';
 import Portal from '@mui/material/Portal';
 import { styled } from '@mui/material/styles';
 
-import square from 'src/assets/shape-square.svg';
-
-import { SvgColor } from 'src/components/svg-color';
+import BgImage from 'src/assets/background.jpg';
 
 import { AnimateLogoRotate } from '../animate';
 
@@ -21,19 +19,6 @@ export function SplashScreen({ portal = true, slots, slotProps, sx, ...other }) 
       <LoadingWrapper {...slotProps?.wrapper}>
         <LoadingContent sx={sx} {...other}>
           {slots?.logo ?? <AnimateLogoRotate {...slotProps?.logo} />}
-          <SvgColor
-            src={square}
-            sx={{
-              top: 0,
-              left: 0,
-              width: '100%',
-              zIndex: -1,
-              height: 1200,
-              opacity: 0.5,
-              position: 'absolute',
-              color: `primary.main`,
-            }}
-          />
         </LoadingContent>
       </LoadingWrapper>
     </PortalWrapper>
@@ -59,5 +44,8 @@ const LoadingContent = styled('div')(({ theme }) => ({
   position: 'fixed',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: 'black',
+  backgroundImage: `url(${BgImage})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover', // ensures image covers entire div
+  backgroundPosition: 'center', // center image
 }));

@@ -5,26 +5,16 @@ import { varAlpha } from 'minimal-shared/utils';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 
-import BgImage from 'src/assets/background.jpg';
-
-import { uploadClasses } from '../classes';
+import { uploadClasses } from '../../../components/upload/classes';
 
 // ----------------------------------------------------------------------
 
 export const UploadWrapper = styled('div')(({ theme }) => ({
   width: '100%',
   height: '100%', // default for mobile
-  [theme.breakpoints.up('md')]: {
-    // md = desktop
-    height: '100vh',
-  },
   padding: '50px 10%', // padding inside wrapper, can adjust as needed
   position: 'relative',
-  backgroundColor: theme.vars.palette.background.default,
-  backgroundImage: `url(${BgImage})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover', // ensures image covers entire div
-  backgroundPosition: 'center', // center image
+  background: 'linear-gradient(135deg, #f1f8e9, #fff8e1, #f1f8e9)',
 }));
 
 export const UploadArea = styled('div')(({ theme }) => ({

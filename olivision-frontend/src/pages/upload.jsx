@@ -1,8 +1,8 @@
 /** @format */
 
-import { CONFIG } from "src/global-config";
+import { CONFIG } from 'src/global-config';
 
-import { UploadView } from "src/sections/upload-view";
+import { UploadView } from 'src/sections/upload-view';
 
 // ----------------------------------------------------------------------
 

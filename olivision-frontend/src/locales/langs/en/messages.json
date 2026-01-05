@@ -1,7 +1,12 @@
 {
+  "title": "Olive Oil Quality Analyzer",
+  "subTitle": "Upload an image to analyze acidity, quality, and maturity",
+  "drog": "Drop or select an image",
+  "drag": "Drag a file here, or click to browse",
   "maturity": "Maturity",
   "acidity": "Acidity",
   "note": "Note",
+  "report": " Analysis Report",
   "recommendation": "Recommendation",
   "generate": "Generate Report",
   "acidityQuality": {
@@ -10,10 +15,12 @@
     "premium": "0.1% - 0.3%: Premium Extra Virgin",
     "highQuality": "0.31% - 0.5%: High Quality Extra Virgin",
     "standard": "0.51% - 0.8%: Standard Extra Virgin",
-    "virgin": "0.8%: Virgin or Lampante"
+    "virgin": "0.8%: Virgin or Lampante",
+    "betterFlavor": "Lower acidity indicates higher quality and better flavor."
   },
   "maturityYield": {
     "title": "MATURITY & YIELD",
+    "range": "Optimal MI range",
     "maturityIndex": "Maturity Index (MI) from 0.0 (deep green) to 7.0 (black skin / dark pulp)"
   }
 }

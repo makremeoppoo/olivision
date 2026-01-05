@@ -5,7 +5,7 @@ import { useState, useCallback } from 'react';
 import { useTranslate } from 'src/locales';
 import axiosInstance, { endpoints } from 'src/lib/axios';
 
-import { Upload } from 'src/components/upload';
+import { Upload } from './default/upload-default';
 
 // ----------------------------------------------------------------------
 
