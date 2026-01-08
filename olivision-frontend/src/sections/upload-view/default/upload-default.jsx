@@ -19,7 +19,6 @@ import { SplashScreen } from 'src/components/loading-screen';
 import { ReportBox } from '../report-box';
 import { Iconify } from '../../../components/iconify';
 import { uploadClasses } from '../../../components/upload/classes';
-import { RejectedFiles } from '../../../components/upload/components/rejected-files';
 import {
   UploadArea,
   DeleteButton,
@@ -130,9 +129,6 @@ export function Upload({
           </SubmitContainer>
 
           {helperText && <FormHelperText error={!!error}>{helperText}</FormHelperText>}
-          {showFilesRejected && (
-            <RejectedFiles files={fileRejections} {...slotProps?.rejectedFiles} />
-          )}
         </Grid>
         <Grid size={{ xs: 12, md: 8 }}>
           <Grid container spacing={3}>
