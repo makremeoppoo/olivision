@@ -1,6 +1,7 @@
 /** @format */
-
 import { CONFIG } from 'src/global-config';
+
+import { BackToTopButton } from 'src/components/animate';
 
 import { UploadView } from 'src/sections/upload-view';
 
@@ -13,6 +14,7 @@ export default function Page() {
     <>
       <title>{metadata.title}</title>
       <UploadView />
+      <BackToTopButton />
     </>
   );
 }
