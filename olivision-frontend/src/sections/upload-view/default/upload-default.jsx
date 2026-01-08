@@ -138,7 +138,12 @@ export function Upload({
       </Grid>
       {renderSingleFileLoading()}
       <Typography
-        sx={{ position: 'absolute', bottom: 0, justifyContent: 'center', left: '40%' }}
+        sx={{
+          position: 'absolute',
+          bottom: 0,
+          justifyContent: 'center',
+          left: { xs: 0, md: '40%' },
+        }}
         textAlign="center"
         color="text.secondary"
       >
