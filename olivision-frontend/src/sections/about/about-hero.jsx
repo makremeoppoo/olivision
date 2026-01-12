@@ -92,11 +92,11 @@ export function AboutHero({ sx, ...other }) {
               px: 4,
               py: 1.5,
               bgcolor: 'white',
-              color: 'success.main',
+              color: 'primary.main',
               '&:hover': { bgcolor: '#f0f0f0' },
             }}
           >
-            Try the Analyzer →
+            {trans.t('about.try')}
           </Button>
         </motion.div>
       </Container>
