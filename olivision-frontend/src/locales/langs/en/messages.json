@@ -22,5 +22,6 @@
     "title": "MATURITY & YIELD",
     "range": "Optimal MI range",
     "maturityIndex": "Maturity Index (MI) from 0.0 (deep green) to 7.0 (black skin / dark pulp)"
-  }
+  },
+  "uploadFailed": "Upload failed"
 }

@@ -5,6 +5,8 @@ import { useState, useCallback } from 'react';
 import { useTranslate } from 'src/locales';
 import axiosInstance, { endpoints } from 'src/lib/axios';
 
+import { toast } from 'src/components/snackbar';
+
 import { Upload } from './default/upload-default';
 
 // ----------------------------------------------------------------------
@@ -15,6 +17,7 @@ export function UploadView() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const { currentLang } = useTranslate();
+  const trans = useTranslate();
 
   const handleDropSingleFile = useCallback((acceptedFiles) => {
     setFile(acceptedFiles[0]);
@@ -42,6 +45,7 @@ export function UploadView() {
 
       setResult(response.data?.data);
     } catch (err) {
+      toast.error(trans.t('uploadFailed'));
       setError(err.response?.data || 'Upload failed');
     } finally {
       setLoading(false);

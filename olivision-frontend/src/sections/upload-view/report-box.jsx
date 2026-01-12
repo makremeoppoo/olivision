@@ -1,43 +1,16 @@
 /** @format */
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import Grid from '@mui/material/Grid';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import Divider from '@mui/material/Divider';
 import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
 
 import { useTranslate } from 'src/locales';
 
-import { Iconify } from 'src/components/iconify';
-
+import { InfoRow, InfoCard, InfoSection, QualityCategory } from '.';
 // ----------------------------------------------------------------------
-const InfoCard = ({ title, icon, bg, sx = {}, children }) => (
-  <Card sx={{ borderRadius: 3, color: 'white', background: bg, ...sx }}>
-    <CardContent>
-      <Stack direction="row" spacing={1} alignItems="center" mb={2}>
-        <Iconify icon={icon} width={22} />
-        <Typography variant="h6">{title}</Typography>
-      </Stack>
-      {children}
-    </CardContent>
-  </Card>
-);
 
-export function ReportBox({
-  sx,
-  icon,
-  title,
-  maturity,
-  acidity,
-  note,
-  recommendation,
-  recommendationAr,
-  alertMessage,
-  color = 'primary',
-  ...other
-}) {
+export function ReportBox({ maturity, acidity, note, recommendation, alertMessage }) {
   const trans = useTranslate();
 
   const qualityCategories = [
@@ -47,94 +20,35 @@ export function ReportBox({
     { range: '> 0.8%', label: trans.t('acidityQuality.virgin'), icon: '○' },
   ];
 
-  const RESULT = (
-    <>
-      {alertMessage && (
-        <Alert severity="error" sx={{ mb: 2 }}>
-          {alertMessage}
-        </Alert>
-      )}
-      <Box>
-        <Box>
-          <Box sx={{ mb: 1 }}>
-            <Box sx={{ typography: 'subtitle2', color: (color = 'rgba(255,255,255,0.8)') }}>
-              <Box sx={{ typography: 'subtitle1', color: (color = 'rgba(255,255,255,0.8)') }}>
-                <Iconify width={20} icon="mdi:leaf" /> {trans.t('maturity')}
-              </Box>
-            </Box>
-            <Box sx={{ typography: 'subtitle2', color: (color = 'rgba(255,255,255,0.8)') }}>
-              {maturity || '-'}
-            </Box>
-          </Box>
-          <Box sx={{ mb: 1 }}>
-            <Box sx={{ typography: 'subtitle1', color: (color = 'rgba(255,255,255,0.8)') }}>
-              <Iconify width={20} icon="mdi:leaf" /> {trans.t('acidity')}
-            </Box>
-            <Box sx={{ typography: 'subtitle2', color: (color = 'rgba(255,255,255,0.8)') }}>
-              {acidity || '-'}
-            </Box>
-          </Box>
-          <Box sx={{ mb: 1 }}>
-            <Box sx={{ typography: 'subtitle1', color: (color = 'rgba(255,255,255,0.8)') }}>
-              <Iconify width={20} icon="mdi:leaf" /> {trans.t('note')}
-            </Box>
-            <Box sx={{ typography: 'subtitle2', color: (color = 'rgba(255,255,255,0.8)') }}>
-              {note || '-'}
-            </Box>
-          </Box>
-          <Box>
-            <Box sx={{ typography: 'subtitle1', color: (color = 'rgba(255,255,255,0.8)') }}>
-              <Iconify width={20} icon="mdi:leaf" /> {trans.t('recommendation')}
-            </Box>
-            <Box sx={{ typography: 'subtitle2', color: (color = 'rgba(255,255,255,0.8)') }}>
-              {recommendation || '-'}
-            </Box>
-          </Box>
-        </Box>
-      </Box>
-    </>
-  );
+  const reportData = [
+    { icon: 'mdi:leaf', label: trans.t('maturity'), value: maturity },
+    { icon: 'mdi:leaf', label: trans.t('acidity'), value: acidity },
+    { icon: 'mdi:leaf', label: trans.t('note'), value: note },
+    { icon: 'mdi:leaf', label: trans.t('recommendation'), value: recommendation },
+  ];
 
   return (
-    <Stack
-      direction={{ xs: 'column', md: 'row' }} // column on mobile, row on desktop
-      spacing={2} // space between items
-      flexWrap="wrap"
-    >
-      {/* Left Column */}
+    <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} flexWrap="wrap">
+      {/* Left Column - Quality Information */}
       <Stack spacing={2} flex={1} minWidth={{ xs: '100%', md: 300 }}>
+        {/* Acidity Quality Card */}
         <InfoCard
           title={trans.t('acidityQuality.title')}
           icon="mdi:water-percent"
           bg="linear-gradient(135deg, #2e7d32, #1b5e20)"
           sx={{ width: '100%' }}
         >
-          {qualityCategories.map((q, i) => (
-            <Box
-              key={i}
-              sx={{
-                p: 2,
-                borderRadius: 2,
-                bgcolor: 'rgba(255,255,255,0.12)',
-                mb: 1,
-              }}
-            >
-              <Stack direction="row" justifyContent="space-between">
-                <Typography fontWeight={600}>{q.range}</Typography>
-                <Typography>{q.icon}</Typography>
-              </Stack>
-              <Typography variant="body2" color="rgba(255,255,255,0.8)">
-                {q.label}
-              </Typography>
-            </Box>
+          {qualityCategories.map((category, index) => (
+            <QualityCategory key={index} {...category} />
           ))}
           <Divider sx={{ my: 2, bgcolor: 'rgba(255,255,255,0.2)' }} />
-          <Stack direction="row" spacing={1}>
-            <Iconify icon="mdi:information-outline" width={18} />
-            <Typography variant="body2">{trans.t('acidityQuality.betterFlavor')}</Typography>
-          </Stack>
+          <InfoSection
+            icon="mdi:information-outline"
+            text={trans.t('acidityQuality.betterFlavor')}
+          />
         </InfoCard>
 
+        {/* Maturity Yield Card */}
         <InfoCard
           title={trans.t('maturityYield.title')}
           icon="mdi:trending-up"
@@ -152,14 +66,14 @@ export function ReportBox({
               mb: 2,
             }}
           />
-          <Stack direction="row" spacing={1}>
-            <Iconify icon="mdi:information-outline" width={18} />
-            <Typography variant="body2">{trans.t('maturityYield.maturityIndex')}</Typography>
-          </Stack>
+          <InfoSection
+            icon="mdi:information-outline"
+            text={trans.t('maturityYield.maturityIndex')}
+          />
         </InfoCard>
       </Stack>
 
-      {/* Right Column */}
+      {/* Right Column - Report Results */}
       <Stack flex={1} minWidth={{ xs: '100%', md: 400 }}>
         <InfoCard
           title={trans.t('report')}
@@ -171,7 +85,16 @@ export function ReportBox({
             width: '100%',
           }}
         >
-          {RESULT}
+          {alertMessage && (
+            <Alert severity="error" sx={{ mb: 2 }}>
+              {alertMessage}
+            </Alert>
+          )}
+          <Box>
+            {reportData.map((item, index) => (
+              <InfoRow key={index} {...item} />
+            ))}
+          </Box>
         </InfoCard>
       </Stack>
     </Stack>
