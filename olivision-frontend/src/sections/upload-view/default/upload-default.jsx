@@ -49,7 +49,7 @@ export function Upload({
   previewOrientation = 'horizontal',
   ...dropzoneOptions
 }) {
-  const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
     multiple,
     disabled,
     ...dropzoneOptions,
@@ -57,7 +57,6 @@ export function Upload({
 
   const isSingleFileSelected = !multiple && !!value && !Array.isArray(value);
   const hasError = isDragReject || !!error;
-  const showFilesRejected = !hideFilesRejected && fileRejections.length > 0;
   const trans = useTranslate();
 
   const renderPlaceholder = () => (
