@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import { useTranslate } from 'src/locales';
 
 import { FlagIcon } from 'src/components/flag-icon';
-import { varTap, varHover, transitionTap } from 'src/components/animate';
+import { varTap, varHover, transitionTap } from 'src/components/animate/variants/actions';
 
 import { CustomPopover } from './custom-popover';
 

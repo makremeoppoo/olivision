@@ -19,7 +19,7 @@ export default function App({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // splash duration
+    }, 200); // splash duration
 
     return () => clearTimeout(timer);
   }, []);

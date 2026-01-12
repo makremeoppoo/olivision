@@ -8,15 +8,14 @@ import { SplashScreen } from './components/loading-screen';
 // ----------------------------------------------------------------------
 
 // ----------------------------------------------------------------------
-
-const UploadPage = lazy(() => import('src/pages/upload'));
+const HomePage = lazy(() => import('src/pages/Home'));
 
 export const routesSection = [
   {
     path: '/',
     element: (
       <Suspense fallback={<SplashScreen />}>
-        <UploadPage />
+        <HomePage />
       </Suspense>
     ),
   },

@@ -23,5 +23,12 @@
     "range": "Optimal MI range",
     "maturityIndex": "Maturity Index (MI) from 0.0 (deep green) to 7.0 (black skin / dark pulp)"
   },
-  "uploadFailed": "Upload failed"
+  "uploadFailed": "Upload failed",
+  "about": {
+    "text1": "What is Olivision?",
+    "text2": "AI‑Powered Olive Oil Quality Analyzer",
+    "text4": "OliVision is an innovative web solution designed to bridge the gap between traditional olive farming and modern agrotech. By utilizing Multimodal AI (Gemini 2.5 Flash), the app empowers farmers to predict the chemical quality of their olive oil directly from the tree, ensuring they capture the Extra Virgin window at the perfect moment.",
+    "text3": "Turn a smartphone photo into chemical insight",
+    "try": "Try the Analyzer"
+  }
 }

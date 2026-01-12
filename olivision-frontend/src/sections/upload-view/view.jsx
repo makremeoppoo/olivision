@@ -45,6 +45,7 @@ export function UploadView() {
 
       setResult(response.data?.data);
     } catch (err) {
+      console.log(err.response?.data);
       toast.error(trans.t('uploadFailed'));
       setError(err.response?.data || 'Upload failed');
     } finally {
