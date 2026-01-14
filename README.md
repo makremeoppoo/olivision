@@ -51,11 +51,11 @@ Our system follows the **International Olive Council (IOC)** standards. The AI e
 
    cd olivision-backend
    create .env
-   npm install
+   yarn
    node server.js
 
    cd olivision-frontend
    create .env
-   npm install
+   yarn
    yarn dev
    ```
