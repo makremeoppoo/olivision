@@ -28,7 +28,7 @@ The timing of the olive harvest determines the difference between a high-value *
 
 ## 🛠️ Tech Stack
 
-- **Mobile:** Modern Web Technologies (HTML5, CSS3, JavaScript/React)
+- **Mobile:** Modern Web Technologies (HTML5, CSS3, JavaScript/React,MUI )
 - **Server:** Node.js / Express.js
 - **AI Engine:** Google Generative AI (Gemini 2.5 Flash)
 - **Logic:** Custom JSON-based prompt engineering for structured agronomic data.
