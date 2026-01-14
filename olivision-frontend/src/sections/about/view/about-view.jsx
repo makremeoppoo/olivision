@@ -1,13 +1,13 @@
-import { AboutHero } from '../about-hero';
 import { AboutWhat } from '../about-what';
 import { AboutVideo } from '../about-video';
+import { AboutOlivision } from '../about-olivision';
 
 // ----------------------------------------------------------------------
 
 export function AboutView() {
   return (
     <>
-      <AboutHero />
+      <AboutOlivision />
 
       <AboutWhat />
 

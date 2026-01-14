@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 
 import { useTranslate } from 'src/locales';
 
-export function AboutHero({ sx, ...other }) {
+export function AboutOlivision({ sx, ...other }) {
   const trans = useTranslate();
 
   const onBackToBottom = () => {

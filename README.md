@@ -44,9 +44,18 @@ Our system follows the **International Olive Council (IOC)** standards. The AI e
 ## 🚀 Installation & Setup
 
 1. **Clone & Install:**
+
    ```bash
-   git clone [https://github.com/yourusername/olivision.git](https://github.com/yourusername/olivision.git)
+   git clone [https://github.com/makremeoppoo/olivision.git](https://github.com/makremeoppoo/olivision)
+
+
    cd olivision-backend
+   create .env
    npm install
    node server.js
+
+   cd olivision-frontend
+   create .env
+   npm install
+   yarn dev
    ```
