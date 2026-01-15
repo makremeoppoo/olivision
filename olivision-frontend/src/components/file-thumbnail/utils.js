@@ -130,19 +130,6 @@ export function detectFileFormat(input) {
 }
 
 /**
- * Returns the corresponding icon URL based on the file format.
- *
- * @example getFileIcon('file.pdf') => '/assets/icons/files/ic-pdf.svg'
- * @example getFileIcon('image.png') => '/assets/icons/files/ic-img.svg'
- */
-export function getFileIcon(input) {
-  const format = detectFileFormat(input);
-  const iconName = FILE_ICONS[format] || FILE_ICONS.unknown;
-
-  return `${CONFIG.assetsDir}/assets/icons/files/${iconName}.svg`;
-}
-
-/**
  * Builds complete file metadata from a File object or file path.
  *
  * @example getFileMeta(fileObj)

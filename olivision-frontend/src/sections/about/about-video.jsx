@@ -3,6 +3,9 @@ import Fab from '@mui/material/Fab';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 
+import Video from 'src/assets/video.mp4';
+import { CONFIG } from 'src/global-config';
+
 import { Iconify } from 'src/components/iconify';
 // ----------------------------------------------------------------------
 
@@ -18,21 +21,22 @@ export function AboutVideo({ sx, ...other }) {
         minHeight: 600,
       }}
     >
-      <iframe
-        src="https://www.youtube.com/embed/nftcw5nOgMc"
-        title="Vision Video"
+      <video
+        src={Video}
+        controls
+        muted
+        playsInline
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
+          inset: 0,
           width: '100%',
           height: '100%',
-          border: 'none',
           borderRadius: 16,
+          objectFit: 'cover',
         }}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      />
+      >
+        Your browser does not support the video tag.
+      </video>
     </div>
   );
 
