@@ -4,9 +4,11 @@ const fs = require('fs');
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const analyzeOliveImage = async (currentLang, filePath, mimeType) => {
     try {
+        const MODEL_NAME = process.env.GEMINI_MODEL || "models/gemini-3-flash-preview";
+
         // Note: As of late 2024/2025, use "gemini-1.5-flash" or "gemini-1.5-pro"
         const model = genAI.getGenerativeModel({
-            model: "gemini-2.5-flash",
+            model: MODEL_NAME,
             generationConfig: {
                 responseMimeType: "application/json",
             }
